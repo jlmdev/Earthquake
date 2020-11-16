@@ -27,11 +27,14 @@ header {
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: rgba($color: #f5f5f5, $alpha: 0.5);
 }
 
 .list {
   display: block;
-  width: 200px;
+  width: 100%;
+  color: blue;
+  font-size: 2rem;
 }
 
 .map {
