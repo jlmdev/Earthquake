@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './custom.scss'
-import ReactMapGL, { NavigationControl } from 'react-map-gl'
+import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl'
 
 export function App() {
   const [viewport, setViewport] = useState({
@@ -33,7 +33,7 @@ export function App() {
         <section className="list">
           <ul>
             {earthquakes.map((earthquake) => (
-              <li key={earthquake.id}>{earthquake.properties.place}</li>
+              <li key={earthquake.id}>{earthquake.properties.place},{earthquake.geometry.coordinates[1]},{earthquake.geometry.coordinates[0]}</li>
             ))}
           </ul>
         </section>
@@ -44,6 +44,17 @@ export function App() {
             onViewportChange={setViewport}
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
             >
+              {earthquakes.map((earthquake) => (
+                <Marker
+                  key={earthquake.id}
+                  latitude={earthquake.geometry.coordinates[1]}
+                  longitude={earthquake.geometry.coordinates[0]}
+                >
+                   <span role="img" aria-label="taco">
+                    &#x1F4cd;
+                  </span>
+                </Marker>
+              ))}
               <div style={{ position: 'absolute', right: 0 }}>
                 <NavigationControl />
               </div>
