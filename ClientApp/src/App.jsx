@@ -6,19 +6,19 @@ export function App() {
   const [viewport, setViewport] = useState({
     width: 500,
     height: 400,
-    latitude: 27.77,
-    longitude: -82.66,
-    zoom: 9.8,
+    latitude: 0,
+    longitude: 0,
+    zoom: 0,
   })
 
-  
+  const [earthquakes, setEarthquakes] = useState([])
 
   useEffect(() => {
     async function loadEarthquakes() {
-      const url = ('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.geojson')
+      const url = ('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson')
       const response = await fetch(url)
       const json = await response.json()
-      console.log(json)
+      setEarthquakes(json.features)
     }
     loadEarthquakes()
     
@@ -31,7 +31,11 @@ export function App() {
       </header>
       <main>
         <section className="list">
-          <div>List</div>
+          <ul>
+            {earthquakes.map((earthquake) => (
+              <li key={earthquake.id}>{earthquake.properties.place}</li>
+            ))}
+          </ul>
         </section>
         <section className="map">
           <ReactMapGL
