@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './custom.scss'
 import ReactMapGL, { NavigationControl } from 'react-map-gl'
 
@@ -10,6 +10,20 @@ export function App() {
     longitude: -82.66,
     zoom: 9.8,
   })
+
+  
+
+  useEffect(() => {
+    async function loadEarthquakes() {
+      const url = ('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_hour.geojson')
+      const response = await fetch(url)
+      const json = await response.json()
+      console.log(json)
+    }
+    loadEarthquakes()
+    
+  }, [])
+
   return (
     <>
       <header>
