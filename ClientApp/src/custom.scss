@@ -23,3 +23,17 @@ header {
   color: black;
   font-weight: bold;
 }
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.list {
+  display: block;
+  width: 200px;
+}
+
+.map {
+  width: 500px;
+}

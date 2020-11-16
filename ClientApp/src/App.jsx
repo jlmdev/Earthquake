@@ -15,18 +15,23 @@ export function App() {
       <header>
         <div className="d-flex justify-content-center display-2 hero-text">Earthquake!</div>
       </header>
-      <section className="map">
-        <ReactMapGL
-          style={{ position: 'absolute' }}
-          {...viewport}
-          onViewportChange={setViewport}
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          >
-            <div style={{ position: 'absolute', right: 0 }}>
-              <NavigationControl />
-            </div>
-          </ReactMapGL>
-      </section>
+      <main>
+        <section className="list">
+          <div>List</div>
+        </section>
+        <section className="map">
+          <ReactMapGL
+            style={{ position: 'absolute' }}
+            {...viewport}
+            onViewportChange={setViewport}
+            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            >
+              <div style={{ position: 'absolute', right: 0 }}>
+                <NavigationControl />
+              </div>
+            </ReactMapGL>
+        </section>
+      </main>
     </>
   )
 }
