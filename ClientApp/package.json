@@ -43,7 +43,10 @@
     "build": "react-scripts build",
     "test": "cross-env CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint ./src/"
+    "lint": "eslint ./src/",
+    "postdeploy": "echo 'Your site was deployed to https://earthquake-joshmann.netlify.app'",
+    "deploy": "netlify deploy --prod --dir=build",
+    "setup-deploy": "app-app --deploy && npm run deploy"
   },
   "browserslist": {
     "production": [
@@ -56,5 +59,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://earthquake-joshmann.netlify.app"
 }
